@@ -163,17 +163,18 @@ At e-commerce website, we deal with 3 kinds of people.
 
 We usually see this kind of authentication on blogging websites. As there is only one owner of the website who creates different users and assigns them a role to manipulate the content of the website.
 
-In this system we create 2 tables that has parent child relationship.
+In this method we will create 2 tables that has parent child relationship.
 `roles` & `users` (In this table we create a column called `role_id` which is a foreign key and refers to the `roles` table column.)
 
 In role-based authentication, the administrator has to create permissions to separate different permissions by role.
 
 **Note:**
+
 This repo is using a package named [laravel-ui](https://github.com/laravel/ui) and using a second authentication method and creating 2 tables `admins` & `users`.
 
 The security of Laravel authentication depends on 2 things; `Guards`(Protectors) and `Providers`.
 
-** Guard: **
+**Guard:**
 The Guard explains how the user is authentic to each request. By default Laravel ships with `session` guard.
 
 **What is session?**
@@ -182,7 +183,8 @@ The Guard explains how the user is authentic to each request. By default Laravel
 
 *Now when the user goes back to the website, the server will check and match Does the server's `session-ID` match the browser cookie? If so, the user is authentic.*
 
-** Provider: **
+**Provider:**
+
 What kind of permanent storage mechanism do you want to use to retrieve users? Do you want to use `eloquent` or `query builder`?
 
 # Deployment
