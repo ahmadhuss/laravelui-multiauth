@@ -181,7 +181,7 @@ The Guard explains how the user is authentic to each request. By default Laravel
 
 *Whenever clients visit our website, our PHP server will generate a cookie with `session_ID` and some content inside the client browser and most importantly a `session` file will also be created in our server. It contains the same `session_ID` and content.*
 
-*Now when the user goes back to the website, the server will check and match Does the server's `session-ID` match the browser cookie? If so, the user is authentic.*
+*Now when the user goes back to the website, the server will check and match, Does the server's `session-ID` match the browser cookie? If so, the user is authentic.*
 
 **Provider:**
 
