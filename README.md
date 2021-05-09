@@ -129,7 +129,7 @@ In general, there are 3 types of authentications when we create web applications
 - [Role-based authentication](#role-based-authentication)
 
 ###  Simple authentication
-It only uses one type of `people` and `1 table`.  The website owner manually edits the database from the database server.
+It only uses one type of `people` and `1 table`.  The website owner manually edits the database from the database server and conditionally renders the content.
 
 ###  Multi authentication
 
@@ -137,6 +137,7 @@ We store records in more than one table. So we authenticate them based on their 
 
 ### Example:
 **School management**:
+
 We create authentication for different type of people for example: `Admins`, `Teachers`, `Moderators`, `Parents` & `Students`.
 
 In this, we have to create multiple authentications for these types of people and each people represents a separate database table inside the database.
@@ -144,8 +145,6 @@ In this, we have to create multiple authentications for these types of people an
 *What if we depend upon only a single table named `users` for all these people authentication?*
 
 The table will be bloated and many records will reside on the same table and difficult to differentiate the user. So it is best practice to create separate table for each type of people.
-
-The table will be bloated and many records will reside on the same table and difficult to differentiate the user. So it is best practice to create a separate table for each type of person.
 
 - admins
 - moderators
