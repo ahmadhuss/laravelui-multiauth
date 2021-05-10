@@ -176,7 +176,7 @@ The security of Laravel authentication depends on 2 things; `Guards`(Protectors)
 
 **Guard:**
 
-The Guard explains how the user is authentic to each request. By default Laravel ships with `session` guard.
+The Guard explains how the user is authentic to each request. By default Laravel ships with the `web` guard which consumes `session` driver.
 
 **What is session?**
 
