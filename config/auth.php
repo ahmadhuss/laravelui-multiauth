@@ -112,6 +112,14 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // We will consume same `password_resets` table with `admins` table
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
     ],
 
     /*
