@@ -36,9 +36,17 @@ return [
     */
 
     'guards' => [
+        // `web` guard basically authenticate `users` table with `session` driver
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        // `admin` guard will also authenticate `admins` table with `session` driver but you can also use
+        // redis driver or maybe JWT driver. The provider basically represents your Model table, we are using
+        // `admins` table and we are registering that provider.
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
 
         'api' => [
@@ -69,6 +77,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
