@@ -32,6 +32,17 @@
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
+
+
+                        @if (Auth::guard('admin')->check() && Route::has('dashboard'))
+                            <a href="{{ route('dashboard') }}" class="ml-4 text-sm text-gray-700 underline">Dashboard</a>
+                        @else
+                            @if (Route::has('admin.login'))
+                                <a href="{{ route('admin.login') }}" class="ml-4 text-sm text-gray-700 underline">Admin Login</a>
+                            @endif
+                        @endif
+
+
                     @endauth
                 </div>
             @endif
