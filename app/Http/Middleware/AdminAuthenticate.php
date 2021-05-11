@@ -14,6 +14,8 @@ class AdminAuthenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        // exprectsJson(): Determine if the current request probably expects a JSON response.
+        // It will return true or false.
         if (! $request->expectsJson()) {
             return route('admin.login');
         }
