@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin'], function(){
     // If yes then redirect back to the route which had given in middleware
     // otherwise use `next($request)` method to access the `localhost/admin/login`
     // route.
-    Route::group(['middleware' => 'guest:admin'], function(){
+    Route::group(['middleware' => 'guest.admin'], function(){
         Route::get('login', [AdminController::class, 'showLoginForm'])->name('admin.login');
         Route::post('login', [AdminController::class, 'login']);
     });
