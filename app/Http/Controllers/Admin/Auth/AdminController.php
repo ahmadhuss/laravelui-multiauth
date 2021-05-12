@@ -33,9 +33,11 @@ class AdminController extends Controller
             Auth::guard('admin')->login($user);
 
             return redirect()->route('dashboard');
-        } else {
-
-            return back();
+        }
+        else {
+            return back()->withErrors([
+                'email' => 'These credentials do not match our records.'
+            ]);
         }
     }
 
