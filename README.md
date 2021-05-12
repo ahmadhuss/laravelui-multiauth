@@ -118,6 +118,20 @@ At the last make sure after updating your database settings. Please use `artisan
 php artisan migrate  
 ```  
 
+# Seed & Adminstration credentials
+We can seed the Admin account with the following command:
+
+```sh
+php artisan db:seed
+```
+
+Behind the scenes it will seed the database with the admin account in your database which has following creditenials.
+```sh
+name: Admin
+email: admin@admin.com
+password: password
+```
+
 # Multi-Authentication
 This information is not about the authentication of APIs, but rather about the authentication we see in the creation of web applications.
 
@@ -161,9 +175,9 @@ At e-commerce website, we deal with 3 kinds of people.
 
 ###  Role based Authentication
 
-We usually see this kind of authentication on blogging websites. As there is only one owner of the website who creates different users and assigns them a role to manipulate the content of the website.
+We usually see this kind of authentication on blogging websites. As there is only one owner of the website who creates different users and assigns them a role to manipulate the content of the website. In this approach, we will create a `middleware` that identifies `roles` on every request.
 
-In this method we will create 2 tables that has parent child relationship.
+We will also create 2 tables that has parent child relationship.
 `roles` & `users` (In this table we create a column called `role_id` which is a foreign key and refers to the `roles` table column.)
 
 In role-based authentication, the administrator has to create permissions to separate different permissions by role.
