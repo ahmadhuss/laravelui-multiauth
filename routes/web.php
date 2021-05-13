@@ -41,8 +41,13 @@ Route::group(['prefix' => 'admin'], function(){
     // otherwise use `next($request)` method to access the `localhost/admin/login`
     // route.
     Route::group(['middleware' => 'guest.admin'], function(){
+        // Login
         Route::get('login', [AdminController::class, 'showLoginForm'])->name('admin.login');
         Route::post('login', [AdminController::class, 'login']);
+
+        // Register
+        Route::get('register', [AdminController::class, 'showRegistrationForm'])->name('admin.register');
+        Route::post('register', [AdminController::class, 'register']);
     });
 
     // This group is for the protection of admin authentication routes and uses `auth.admin`

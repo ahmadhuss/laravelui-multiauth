@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class AdminController extends Controller
@@ -40,6 +41,32 @@ class AdminController extends Controller
             ]);
         }
     }
+
+
+    public function showRegistrationForm() {
+        return view('admin.auth.register');
+    }
+
+    public function register(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:admins', // unique:admins will run query and check if email is taken or not.
+            'password' => 'required|confirmed', // Automatically attach to the field password_confirmation
+        ]);
+
+        // After request validation create the field
+        $admin = Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        auth()->guard('admin')->loginUsingId($admin);
+
+        return redirect()->route('dashboard');
+    }
+
+
 
     public function showDashboard() {
         return view('admin.dashboard.home');
