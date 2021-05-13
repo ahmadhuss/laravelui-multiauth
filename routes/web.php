@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Auth\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +47,10 @@ Route::group(['prefix' => 'admin'], function(){
     // middleware.
     Route::group(['middleware' => 'auth.admin'], function(){
         Route::get('dashboard', [AdminController::class, 'showDashboard'])->name('dashboard');
+
+        // Logout
+        Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
     });
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

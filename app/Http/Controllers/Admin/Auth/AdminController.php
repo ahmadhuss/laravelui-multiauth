@@ -44,4 +44,9 @@ class AdminController extends Controller
     public function showDashboard() {
         return view('admin.dashboard.home');
     }
+
+    public function logout() {
+        auth()->guard('admin')->logout();
+        return redirect()->route('admin.login');
+    }
 }
