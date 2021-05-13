@@ -132,6 +132,36 @@ email: admin@admin.com
 password: password
 ```
 
+# Mail configurations
+```  
+MAIL_MAILER=smtp  
+MAIL_HOST=mailhog  
+MAIL_PORT=1025  
+MAIL_USERNAME=null  
+MAIL_PASSWORD=null  
+MAIL_ENCRYPTION=null  
+MAIL_FROM_ADDRESS=null  
+MAIL_FROM_NAME="${APP_NAME}"
+```  
+
+### Local:
+If you want to see the forgotten password feature in local environment, make sure you enter the settings in the `.env` file according to your private email hosting configuration and also provide a `MAIL_FROM_ADDRESS` value so your application email will be forwarded to others with this email. 
+
+I suggest you use any secure email testing service such as [Mailtrap](https://mailtrap.io) to check this feature in your localhost. The `.env` settings will be changed this way.
+```
+MAIL_MAILER=smtp  
+MAIL_HOST=smtp.mailtrap.io  
+MAIL_PORT=2525  
+MAIL_USERNAME=mailtrap-username
+MAIL_PASSWORD=mailtrap-password
+MAIL_ENCRYPTION=tls  
+MAIL_FROM_ADDRESS=yourpersonalemail@gmail.com  
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+### Production:
+The production forgotten password feature configured with my personal `Gmail` account. So all forgotten password emails will come from this account.
+
 # Multi-Authentication
 This information is not about the authentication of APIs, but rather about the authentication we see in the creation of web applications.
 
