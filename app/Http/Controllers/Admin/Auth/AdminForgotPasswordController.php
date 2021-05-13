@@ -19,4 +19,11 @@ class AdminForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+
+    public function showLinkRequestForm()
+    {
+        return view('admin.auth.passwords.email');
+    }
+
 }
