@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ Route::get('/', function () {
 
 // Basic User Authentication routes
 Auth::routes();
+// We don't want to use the default logout function of the normal Auth user. Because it will destroy
+// sessions for all the guards. Instead we will user custom logout for Auth user so that all session
+// may not be destroyed.
+Route::post('user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 
 // Admin Authentication routes:
 // The admin controller routes are prefix with `admin`
