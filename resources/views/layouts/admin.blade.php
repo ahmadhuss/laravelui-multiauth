@@ -61,6 +61,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Admin Login') }}</a>
                             </li>
+
+                            <li>
+                                <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Admin Registration') }}</a>
+                            </li>
                         @endif
                     </ul>
                 </div>
