@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AdminForgotPasswordController;
+use App\Http\Controllers\Admin\Auth\AdminResetPasswordController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +50,11 @@ Route::group(['prefix' => 'admin'], function(){
         // Register
         Route::get('register', [AdminController::class, 'showRegistrationForm'])->name('admin.register');
         Route::post('register', [AdminController::class, 'register']);
+
+        // Password Reset
+        Route::get('password/reset', [AdminForgotPasswordController::class, 'showLinkRequestForm'])->name( 'admin.password.request'); // Currently this name route ('admin.password.request') is not used anywhere!
+        Route::post('password/email', [AdminForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
+
     });
 
     // This group is for the protection of admin authentication routes and uses `auth.admin`
