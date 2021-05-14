@@ -59,6 +59,12 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('password/email', [AdminForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email'); // The email.blade.php form file will use this route to send post request.
 
 
+        // Important:
+        // AdminResetPasswordNotification.php `toMail()` linked to this route.
+        // This route will be translated in the email which we will send to others.
+        Route::get('password/reset/{token}', function (){})->name('admin.password.reset');
+
+
     });
 
     // This group is for the protection of admin authentication routes and uses `auth.admin`
