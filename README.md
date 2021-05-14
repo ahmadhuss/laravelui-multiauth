@@ -1,6 +1,7 @@
 # How can we use this repo?
 
 - [Installation](#install)
+- [Mail configurations](#mail-configurations)
 - [Multi Authentication](#multi-authentication)
 
 # Install
