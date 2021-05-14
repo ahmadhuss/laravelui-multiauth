@@ -62,7 +62,10 @@ Route::group(['prefix' => 'admin'], function(){
         // Important:
         // AdminResetPasswordNotification.php `toMail()` linked to this route.
         // This route will be translated in the email which we will send to others.
-        Route::get('password/reset/{token}', function (){})->name('admin.password.reset');
+
+        // The mail receiver person will use this GET route to reset his/her password.
+        // This GET route will present the view `reset.blade.php` file which contains new password fields.
+        Route::get('password/reset/{token}', [AdminResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
 
 
     });
