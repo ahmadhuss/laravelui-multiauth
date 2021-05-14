@@ -67,6 +67,9 @@ Route::group(['prefix' => 'admin'], function(){
         // This GET route will present the view `reset.blade.php` file which contains new password fields.
         Route::get('password/reset/{token}', [AdminResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
 
+        // We explicitly are not defining the method `reset` instead we are using same master body of this method which is defined inside the `AdminResetPasswordController` trait `ResetsPasswords` method.
+        Route::post('password/reset', [AdminResetPasswordController::class, 'reset'])->name('admin.password.update'); // The reset.blade.php form file will use this route to send post request.
+
 
     });
 
