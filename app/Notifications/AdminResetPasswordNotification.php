@@ -12,15 +12,18 @@ class AdminResetPasswordNotification extends Notification
     use Queueable;
 
     public $token;
+    public $email;
 
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $token
+     * @param null $email
      */
-    public function __construct($token)
+    public function __construct($token, $email = null)
     {
         $this->token = $token;
+        $this->email = $email;
     }
 
     /**
@@ -45,9 +48,11 @@ class AdminResetPasswordNotification extends Notification
         // Currently, In our action method:
         // The "admin.password.reset" route is the unique route that receiver will receive through email.
         // This receive email will contains user email & token.
+        // route('admin.password.reset', $this->token)) translates into http://localhost/admin/password/reset/033860c11059dcc4c
+       //  route('admin.password.reset', [$this->token, 'email' => $this->email]) translates into http://localhost/admin/password/reset/033860c11059dcc4c?email=h@h.com
         return (new MailMessage)
                     ->line('You request to reset your password.')
-                    ->action('Reset Password Action', route('admin.password.reset', $this->token))
+                    ->action('Reset Password Action', route('admin.password.reset', [$this->token, 'email' => $this->email]))
                     ->line('Thank you for using our application!');
     }
 

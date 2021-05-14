@@ -44,6 +44,8 @@ class Admin extends Authenticatable
     // We are overriding the sendPasswordRestNotification email
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new AdminResetPasswordNotification($token));
+        // `$this` has instance of the model so we get the email attribute value and pass to the
+        // notification so it includes also the email in the Mail that we will send.
+        $this->notify(new AdminResetPasswordNotification($token, $this->email));
     }
 }
