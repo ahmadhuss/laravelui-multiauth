@@ -54,6 +54,8 @@ Route::group(['prefix' => 'admin'], function(){
         // Password Reset
         Route::get('password/reset', [AdminForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request'); // This name route is used inside the admin `login.blade.php` file to show the forgot password link which is nothing but shows an email blade.php file.
         // We explicitly are not defining the method `sendResetLinkEmail()` inside the controller instead we are using same master body of this method which is defined inside the `AdminForgotPasswordController` trait `SendsPasswordResetEmails` method.
+        // This route will not properly work because the method `sendResetLinkEmail()` will send reset password
+        // link with the use of 1 more GET route named `localhost/admin/password/reset/${token}`
         Route::post('password/email', [AdminForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email'); // The email.blade.php form file will use this route to send post request.
 
 
